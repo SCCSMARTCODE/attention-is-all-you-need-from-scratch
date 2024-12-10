@@ -19,8 +19,6 @@ Transformers have revolutionized the fields of Natural Language Processing (NLP)
   - Feedforward layers
 - Modular and easy-to-read codebase.
 - Compatible with PyTorch for seamless integration into other projects.
-- Includes unit tests for key components.
-- Example training scripts to validate the implementation.
 
 ---
 
@@ -54,34 +52,29 @@ Explore individual components:
 
 ```
 transformer-from-scratch/
+│   .gitignore
+│   LICENSE
+│   Pipfile
+│   Pipfile.lock
+│   README.md
 │
-├── src/
-│   ├── models/
-│   │   ├── transformer.py       # Full Transformer implementation
-│   │   ├── self_attention.py    # Scaled dot-product attention
-│   │   ├── multihead_attention.py
-│   │   ├── positional_encoding.py
-│   │   └── feedforward.py       # Feedforward layers
-│   │
-│   ├── data/
-│   │   ├── dataset.py           # Custom dataset loaders
-│   │   └── tokenization.py      # Tokenizer for pre-processing
-│   │
-│   ├── utils/
-│   │   └── metrics.py           # BLEU, accuracy, etc.
-│   │
-│   └── training/
-│       ├── train.py             # Training script
-│       └── evaluate.py          # Evaluation script
-│
-├── configs/
-│   └── default.yaml             # Configuration file
-│
-├── tests/                       # Unit tests for components
-│
-├── requirements.txt             # Python dependencies
-│
-└── README.md
+└───src
+    ├───models
+    │       decoder.py
+    │       embedding.py
+    │       encoder.py
+    │       feedforward.py
+    │       layer_normalization.py
+    │       multihead_attention.py
+    │       positional_encoding.py
+    │       residual_connection.py
+    │       transformer.py
+    │       __init__.py
+    │
+    └───utils
+            build.py
+            __init__.py
+
 ```
 
 ---
@@ -102,22 +95,6 @@ transformer-from-scratch/
 
 5. **Layer Normalization and Residual Connections**  
    Stabilizes training and helps with gradient flow.
-
----
-
-## 📊 Dataset
-
-This repository supports training on small datasets for learning purposes. Example datasets include:
-- Toy machine translation datasets
-- Character-level sequence generation tasks
-
----
-
-## 📝 To-Do
-
-- [ ] Add visualization for attention weights.
-- [ ] Extend to support pre-trained embeddings.
-- [ ] Add support for multi-modal data (e.g., images + text).
 
 ---
 
