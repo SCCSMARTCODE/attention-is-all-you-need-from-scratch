@@ -4,6 +4,7 @@ from torch import nn
 from src.models.decoder import Decoder
 from src.models.encoder import Encoder
 from src.models.embedding import InputEmbedding
+from src.models.positional_encoding import PositionalEncoding
 
 
 class ProjectionLayer(nn.Module):

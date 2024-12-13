@@ -1,5 +1,4 @@
 import torch.nn as nn
-import math
 import torch
 
 
@@ -10,7 +9,7 @@ class LayerNormalization(nn.Module):
         self.alpha = nn.Parameter(torch.ones(1))
         self.beta = nn.Parameter(torch.zeros(1))
 
-    def forward(self, input: torch.Tensor):
-        mean = input.mean(dim=-1, keepdim=True)
-        std = input.mean(dim=-1, keepdim=True)
-        return self.alpha * (input - mean)/(std + self.eps) + self.beta
+    def forward(self, input_: torch.Tensor):
+        mean = input_.mean(dim=-1, keepdim=True)
+        std = input_.mean(dim=-1, keepdim=True)
+        return self.alpha * (input_ - mean)/(std + self.eps) + self.beta

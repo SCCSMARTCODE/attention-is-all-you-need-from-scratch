@@ -27,13 +27,13 @@ class MultiHeadAttention(nn.Module):
         key = key.view(key.shape[0], key.shape[1], self.heads, self.d_per_h).transpose(1, 2)
         value = value.view(value.shape[0], value.shape[1], self.heads, self.d_per_h).transpose(1, 2)
 
-        x, attention_score = self.generate_attention(query, key, value, ...)
+        x, attention_score = self.generate_attention(query, key, value, mask, nn.Dropout(self.dropout))
         x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.d_model)
 
         return self.output_trans_matrix(x)
 
     def generate_attention(self, query, key, value, mask, dropout: nn.Dropout):
-        attention_scores = (query @ key.reshape(-2,-1)) / math.sqrt(self.d_per_h)
+        attention_scores = (query @ key.reshape(-2, -1)) / math.sqrt(self.d_per_h)
         if mask:
             attention_scores.masked_fill(mask == 0, float('-inf'))
         attention_scores = nn.Softmax(dim=-1)

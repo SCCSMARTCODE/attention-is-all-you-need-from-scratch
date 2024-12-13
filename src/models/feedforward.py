@@ -12,5 +12,5 @@ class PWFeedForwardNetworks(nn.Module):
             nn.Linear(in_features=d_ff, out_features=d_model)
         )
 
-    def forward(self, input: torch.Tensor):
-        return self.network(input)
+    def forward(self, input_: torch.Tensor):
+        return self.network(input_)
